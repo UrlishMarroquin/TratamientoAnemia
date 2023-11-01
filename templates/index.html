@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    body{
+      line-height:1.5;
+      background-image: url('/static/img/fondo.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-size:10px;
+    }
+    p {
+      color: blue;
+      background-color: white;
+    }
+    b {
+      color: blue;
+    }
+  </style>
+  <head>
+    <meta charset="utf-8">
+    <title>Tratamiento Anemia</title>
+    <!-- meta -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- styles -->
+    <link
+      href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+      rel="stylesheet"
+    >
+
+    {% block css %}{% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <div class="">
+        <form action="/" method="POST">
+          <div class="field">
+            <br>
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <h1 class="title" align="center"><p>Tratamiento de Anemia</p></h1>
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+            </table>
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <br><label class="label"><b>Edad*</b></label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="tipo_edad" name="tipo_edad">
+                        <option value="1">Menor 1 año</option>
+                        <option value="2">1 año</option>
+                        <option value="3">2 años</option>
+                        <option value="4">3 años</option>
+                        <option value="5">4 años</option>
+                        <option value="6">5 años</option>
+                        <option value="7">6 años</option>
+                        <option value="8">7 años</option>
+                        <option value="9">8 años</option>
+                        <option value="10">9 años</option>
+                        <option value="11">10 años</option>
+                        <option value="12">11 años</option>
+                      </select>
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <br><label class="label"><b>Estrato Social*</b></label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="estrato_social" name="estrato_social">
+                        <option value="1">Alto</option>
+                        <option value="2">Medio Alto</option>
+                        <option value="3">Medio</option>
+                        <option value="4">Medio Bajo</option>
+                        <option value="5">Bajo</option> 
+                      </select>
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <br><label class="label"><b>Tipo Anemia*</b></label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="tipo_anemia" name="tipo_anemia">
+                        <option value="1">Común (D500, D508, D509, D649)</option>
+                        <option value="2">Otras</option>
+                      </select>
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 10%;"></td>                 
+              </tr>                   
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <br><label class="label"><b>Examen Hemoglobina*</b></label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="examen_hemoglobina" name="examen_hemoglobina">
+                        <option value="1">Si Realiza</option>
+                        <option value="2">No Realiza</option>
+                      </select>
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 10%;"></td>                 
+              </tr>
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <br><label class="label"><b>Administración*</b></label>
+                  <div class="control">
+                    <div class="select is-fullwidth">
+                      <select id="tipo_administracion" name="tipo_administracion">
+                        <option value="1">Hierro Polimaltosado</option>
+                        <option value="2">Sulfato Ferroso</option>
+                      </select>
+                    </div>
+                  </div>
+                </td>
+                <td style="width: 10%;"></td>                 
+              </tr>                                                               
+            </table>
+            <br>
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <input type="submit" class="button is-primary is-fullwidth" style="font-size:13pt;padding:2px; border:1px solid blue; background-color:blue" value="Predecir">
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+            </table>
+          </div>
+        </form>
+        <br>
+          {% if predictions %}
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <label class="label" align="center" style="font-size:15pt;padding:2px"><p>Resultado de la Predicción</p></label>
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+            </table>
+            <table style="width: 100%;">
+              <tr>
+                <td style="width: 10%;"></td>
+                <td style="width: 80%;">
+                  <label class="label" align="center" style="font-size:14pt;padding:2px"><p>{{ predictions }}</p></label>
+                </td>
+                <td style="width: 10%;"></td>
+              </tr>
+            </table>
+            
+            
+            <script>
+              selectElement('tipo_edad', {{ tipo_edad }})
+              selectElement('estrato_social', {{ estrato_social }})
+              selectElement('tipo_anemia', {{ tipo_anemia }})
+              selectElement('examen_hemoglobina', {{ examen_hemoglobina }})
+              selectElement('tipo_administracion', {{ tipo_administracion }})                                                       
+              function selectElement(id, valueToSelect) {    
+                  let element = document.getElementById(id);
+                  element.value = valueToSelect;
+              }    
+            </script>
+          {% else %}
+            <p></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    </script>
+    {% block js %}{% endblock %}
+    <br>
+  </body>
+</html>
